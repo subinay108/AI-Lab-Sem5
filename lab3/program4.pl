@@ -51,4 +51,4 @@ uncle(X, Y):- parent(Z, Y), brother(X, Z).
 grandmother(X, Y):- mother(Z, Y), mother(X, Z).
 
 % X is cousin of Y
-% cousin(X, Y):- 
+cousin(X, Y):- uncle(Z, Y), parent(X, Z);
