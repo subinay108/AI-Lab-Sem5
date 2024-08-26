@@ -9,10 +9,10 @@
 sings(ananya).
 sings(rohit).
 
-plays_guiter(rohit, guiter).
 
 listen_music(ananya):- sings(ananya).
 happy(ananya):- sings(ananya).
 
+plays_guiter(rohit).
 plays_guiter(rohit):- sings(rohit).
 
