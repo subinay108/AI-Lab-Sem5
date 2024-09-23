@@ -33,20 +33,21 @@ fibonacci_N(A, B, N):-
     fibonacci_N(T, T1, N1).
 
 % Fibonacci upto N-th term
-fib(A, B, N, L):-
+fib(0, 1, 1, L, Res):-
+    append(L, [0], Res).
+fib(A, B, N, L, Res):-
     N > 0,
     N1 is N - 1,
     T is B,
     T1 is A + B,
-    append(L, [A], L),
-    L = L1,
-    fib(T, T1, N1, L).
+    fib(T, T1, N1, L, Res1).
+    append(Res1, [A], Res),
 
 fibonacci_list(1, [0]).
 fibonacci_list(N, L):-
     N > 1,
-    L = [0],
-    fib(0, 1, N, L).
+    fib(0, 1, N, [], Res),
+    L = Res.
 
 % Range
 % range(1, [1]).
