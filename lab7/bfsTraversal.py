@@ -1,6 +1,6 @@
-# WAPP for Breadth First Search
+# WAPP for Breadth First Search Traversal
 
-def bfs(graph, start, key):
+def bfsTraversal(graph, start):
     queue = [start]
     visited = set()
     
@@ -10,15 +10,10 @@ def bfs(graph, start, key):
         if node not in visited:
             visited.add(node)
             print(node, end='->')
-            if key == node:
-                print('\nKey is found')
-                return
 
             for neighbor in graph[node]:
                 if neighbor not in visited:
                     queue.append(neighbor)
-    
-    print('\nKey is not found')
 
 if __name__ == '__main__':
     graph = { 
@@ -31,6 +26,6 @@ if __name__ == '__main__':
         7: [3, 6, 8],
         8: [3, 7]
     }
-    bfs(graph, 2, 1)
+    bfsTraversal(graph, 2)
 
 
