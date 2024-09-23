@@ -32,27 +32,27 @@ fibonacci_N(A, B, N):-
     write(A), write(' '),
     fibonacci_N(T, T1, N1).
 
-% Fibonacci upto N-th term
-fib(0, 1, 1, L, Res):-
-    append(L, [0], Res).
-fib(A, B, N, L, Res):-
-    N > 0,
-    N1 is N - 1,
-    T is B,
-    T1 is A + B,
-    fib(T, T1, N1, L, Res1).
-    append(Res1, [A], Res),
-
-fibonacci_list(1, [0]).
-fibonacci_list(N, L):-
-    N > 1,
-    fib(0, 1, N, [], Res),
-    L = Res.
-
-% Range
-% range(1, [1]).
-% range(N, [1 | Rest]):-
-%     N > 1, 
+% Fibonacci List
+% fibonacci_list(1, [0]). % Base case
+% fibonacci_list(N, L):-
+%     N > 1,
+%     fibonacci(N, F),
 %     N1 is N - 1,
-%     range(N1, Rest).
+%     fibonacci_list(N1, Res),
+%     append(Res, [F], L).
 
+rev_fibonacci_list(1, [0]).
+rev_fibonacci_list(2, [1, 0]).
+rev_fibonacci_list(N, L):-
+    N > 2,
+    N1 is N - 1,
+    rev_fibonacci_list(N1, L1),
+    [A, B | _] = L1,
+    C is A + B,
+    L = [C | L1].
+
+fibonacci_list(N, L):-
+    rev_fibonacci_list(N, L1),
+    reverse(L1, L).
+
+    
